@@ -4,20 +4,31 @@
  */
 package ed_t6;
 
+// Este es un comentario para comprobar el funcionamiento del control de versiones desde Netbeans 
 public class Ed_T6_Class {
-    public void aplicarDescuento(double precioProducto, int numProductos) {
-        double total;
-        if(numProductos > 3)
-            precioProducto -= 5;
 
+    private static final double DESCUENTO_CANTIDAD = 5; 
+    private static final double DESCUENTO_PORCENTAJE_REGULAR = 0.8;
+    private static final double DESCUENTO_PORCENTAJE_BASE = 0.95;
+
+    public void aplicarDescuento(double precioProducto, int numProductos) {
+        if(numProductos > 3)
+            precioProducto -= DESCUENTO_CANTIDAD;
+
+        double total = calcularTotal(precioProducto, numProductos);
+        imprimirTotalYMensaje(total);
+    }
+
+    private double calcularTotal(double precioProducto, int numProductos) {
         if (numProductos != 0) {
-            total = precioProducto * 0.8;
-            System.out.println("El total a pagar es: " + total);
-            System.out.println("Enviado");
+            return precioProducto * DESCUENTO_PORCENTAJE_REGULAR;
         } else {
-            total = precioProducto * 0.95;
-            System.out.println("El total a pagar es: " + total);
-            System.out.println("Enviado");
+            return precioProducto * DESCUENTO_PORCENTAJE_BASE;
         }
+    }
+
+    private void imprimirTotalYMensaje(double total) {
+        System.out.println("El total a pagar es: " + total);
+        System.out.println("Enviado");
     }
 }
